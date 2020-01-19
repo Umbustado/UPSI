@@ -1,4 +1,6 @@
 # UPSI
 Umbustado’s Pavlov Shack Installer
 
-Coming soon !
+Better description coming soon !
+
+For now - it does what it says on the tin :D
