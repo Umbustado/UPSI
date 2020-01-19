@@ -14,3 +14,6 @@
  - Log files produced for troubleshooting
  - Press Shift while loading for the option of deleting all local UPSI files and starting from scratch
  - Everything a budding Pavlovian could need !!!!! :D
+
+
+(*Install package is in **UPSI/bin/Release/UPSI.publish***)
