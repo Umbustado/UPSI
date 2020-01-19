@@ -1,5 +1,5 @@
 # UPSI
-*Pronounced* '*oopsy*'
+*Pronounced* '*oopsy* '
 
 
 ***Umbustado’s Pavlov Shack Installer***
