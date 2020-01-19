@@ -20,42 +20,42 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.cmbPavlovSelect = New System.Windows.Forms.ComboBox
+        Me.tbGameName = New System.Windows.Forms.TextBox
         Me.btnUpdate = New System.Windows.Forms.Button
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Button3 = New System.Windows.Forms.Button
+        Me.btnCheckForUpdate = New System.Windows.Forms.Button
+        Me.btnChangeGameName = New System.Windows.Forms.Button
+        Me.btnSetPermissions = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label6 = New System.Windows.Forms.Label
-        Me.Button4 = New System.Windows.Forms.Button
-        Me.TextBox2 = New System.Windows.Forms.TextBox
-        Me.Button5 = New System.Windows.Forms.Button
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar
-        Me.StatusStrip1.SuspendLayout()
+        Me.btnOpenLogs = New System.Windows.Forms.Button
+        Me.txtConsoleDisplay = New System.Windows.Forms.TextBox
+        Me.btnAbout = New System.Windows.Forms.Button
+        Me.StatusBar = New System.Windows.Forms.StatusStrip
+        Me.txtNotifier = New System.Windows.Forms.ToolStripStatusLabel
+        Me.ProgressBar = New System.Windows.Forms.ToolStripProgressBar
+        Me.StatusBar.SuspendLayout()
         Me.SuspendLayout()
         '
-        'ComboBox1
+        'cmbPavlovSelect
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(150, 115)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(300, 21)
-        Me.ComboBox1.TabIndex = 1
+        Me.cmbPavlovSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPavlovSelect.FormattingEnabled = True
+        Me.cmbPavlovSelect.Location = New System.Drawing.Point(150, 115)
+        Me.cmbPavlovSelect.Name = "cmbPavlovSelect"
+        Me.cmbPavlovSelect.Size = New System.Drawing.Size(300, 21)
+        Me.cmbPavlovSelect.TabIndex = 1
         '
-        'TextBox1
+        'tbGameName
         '
-        Me.TextBox1.Location = New System.Drawing.Point(150, 195)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(300, 20)
-        Me.TextBox1.TabIndex = 2
+        Me.tbGameName.Location = New System.Drawing.Point(150, 195)
+        Me.tbGameName.Name = "tbGameName"
+        Me.tbGameName.Size = New System.Drawing.Size(300, 20)
+        Me.tbGameName.TabIndex = 2
         '
         'btnUpdate
         '
@@ -67,35 +67,35 @@ Partial Class Main
         Me.btnUpdate.Text = "Install To Quest"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnCheckForUpdate
         '
-        Me.Button1.ForeColor = System.Drawing.Color.Black
-        Me.Button1.Location = New System.Drawing.Point(309, 142)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(107, 21)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Check For Updates"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnCheckForUpdate.ForeColor = System.Drawing.Color.Black
+        Me.btnCheckForUpdate.Location = New System.Drawing.Point(309, 142)
+        Me.btnCheckForUpdate.Name = "btnCheckForUpdate"
+        Me.btnCheckForUpdate.Size = New System.Drawing.Size(107, 21)
+        Me.btnCheckForUpdate.TabIndex = 4
+        Me.btnCheckForUpdate.Text = "Check For Updates"
+        Me.btnCheckForUpdate.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnChangeGameName
         '
-        Me.Button2.ForeColor = System.Drawing.Color.Black
-        Me.Button2.Location = New System.Drawing.Point(195, 221)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(107, 21)
-        Me.Button2.TabIndex = 5
-        Me.Button2.Text = "Change Name"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnChangeGameName.ForeColor = System.Drawing.Color.Black
+        Me.btnChangeGameName.Location = New System.Drawing.Point(195, 221)
+        Me.btnChangeGameName.Name = "btnChangeGameName"
+        Me.btnChangeGameName.Size = New System.Drawing.Size(107, 21)
+        Me.btnChangeGameName.TabIndex = 5
+        Me.btnChangeGameName.Text = "Change Name"
+        Me.btnChangeGameName.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnSetPermissions
         '
-        Me.Button3.ForeColor = System.Drawing.Color.Black
-        Me.Button3.Location = New System.Drawing.Point(309, 221)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(107, 21)
-        Me.Button3.TabIndex = 6
-        Me.Button3.Text = "Set Permissions"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnSetPermissions.ForeColor = System.Drawing.Color.Black
+        Me.btnSetPermissions.Location = New System.Drawing.Point(309, 221)
+        Me.btnSetPermissions.Name = "btnSetPermissions"
+        Me.btnSetPermissions.Size = New System.Drawing.Size(107, 21)
+        Me.btnSetPermissions.TabIndex = 6
+        Me.btnSetPermissions.Text = "Set Permissions"
+        Me.btnSetPermissions.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -170,64 +170,64 @@ Partial Class Main
         Me.Label6.TabIndex = 13
         Me.Label6.Text = "Installer"
         '
-        'Button4
+        'btnOpenLogs
         '
-        Me.Button4.ForeColor = System.Drawing.Color.Black
-        Me.Button4.Location = New System.Drawing.Point(195, 248)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(221, 21)
-        Me.Button4.TabIndex = 14
-        Me.Button4.Text = "Open Logs"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnOpenLogs.ForeColor = System.Drawing.Color.Black
+        Me.btnOpenLogs.Location = New System.Drawing.Point(195, 248)
+        Me.btnOpenLogs.Name = "btnOpenLogs"
+        Me.btnOpenLogs.Size = New System.Drawing.Size(221, 21)
+        Me.btnOpenLogs.TabIndex = 14
+        Me.btnOpenLogs.Text = "Open Logs"
+        Me.btnOpenLogs.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'txtConsoleDisplay
         '
-        Me.TextBox2.BackColor = System.Drawing.Color.Black
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox2.ForeColor = System.Drawing.Color.Yellow
-        Me.TextBox2.Location = New System.Drawing.Point(0, -1)
-        Me.TextBox2.MaxLength = 9999999
-        Me.TextBox2.Multiline = True
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox2.Size = New System.Drawing.Size(599, 311)
-        Me.TextBox2.TabIndex = 16
+        Me.txtConsoleDisplay.BackColor = System.Drawing.Color.Black
+        Me.txtConsoleDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtConsoleDisplay.ForeColor = System.Drawing.Color.Yellow
+        Me.txtConsoleDisplay.Location = New System.Drawing.Point(0, -1)
+        Me.txtConsoleDisplay.MaxLength = 9999999
+        Me.txtConsoleDisplay.Multiline = True
+        Me.txtConsoleDisplay.Name = "txtConsoleDisplay"
+        Me.txtConsoleDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtConsoleDisplay.Size = New System.Drawing.Size(599, 311)
+        Me.txtConsoleDisplay.TabIndex = 16
         '
-        'Button5
+        'btnAbout
         '
-        Me.Button5.ForeColor = System.Drawing.Color.Black
-        Me.Button5.Location = New System.Drawing.Point(195, 275)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(221, 21)
-        Me.Button5.TabIndex = 17
-        Me.Button5.Text = "About"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnAbout.ForeColor = System.Drawing.Color.Black
+        Me.btnAbout.Location = New System.Drawing.Point(195, 275)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Size = New System.Drawing.Size(221, 21)
+        Me.btnAbout.TabIndex = 17
+        Me.btnAbout.Text = "About"
+        Me.btnAbout.UseVisualStyleBackColor = True
         '
-        'StatusStrip1
+        'StatusBar
         '
-        Me.StatusStrip1.BackColor = System.Drawing.Color.Transparent
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 313)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(599, 22)
-        Me.StatusStrip1.SizingGrip = False
-        Me.StatusStrip1.TabIndex = 18
-        Me.StatusStrip1.Text = "StatusStrip1"
+        Me.StatusBar.BackColor = System.Drawing.Color.Transparent
+        Me.StatusBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtNotifier, Me.ProgressBar})
+        Me.StatusBar.Location = New System.Drawing.Point(0, 313)
+        Me.StatusBar.Name = "StatusBar"
+        Me.StatusBar.Size = New System.Drawing.Size(599, 22)
+        Me.StatusBar.SizingGrip = False
+        Me.StatusBar.TabIndex = 18
+        Me.StatusBar.Text = "StatusBar"
         '
-        'ToolStripStatusLabel2
+        'txtNotifier
         '
-        Me.ToolStripStatusLabel2.AutoSize = False
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(449, 17)
-        Me.ToolStripStatusLabel2.Text = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.txtNotifier.AutoSize = False
+        Me.txtNotifier.Name = "txtNotifier"
+        Me.txtNotifier.Size = New System.Drawing.Size(449, 17)
+        Me.UpdateNotifier("txtNotifier")
+        Me.txtNotifier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'ToolStripProgressBar1
+        'ProgressBar
         '
-        Me.ToolStripProgressBar1.AutoSize = False
-        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(145, 16)
-        Me.ToolStripProgressBar1.Value = 50
+        Me.ProgressBar.AutoSize = False
+        Me.ProgressBar.Name = "ProgressBar"
+        Me.ProgressBar.Size = New System.Drawing.Size(145, 16)
+        Me.ProgressBar.Value = 50
         '
         'Main
         '
@@ -236,50 +236,50 @@ Partial Class Main
         Me.BackgroundImage = Global.UPSI.My.Resources.Resources.ss_f1715f00fdb90e66e4ac9f98ee0c8432e0d925ce_600x338
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(599, 335)
-        Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.txtConsoleDisplay)
+        Me.Controls.Add(Me.StatusBar)
+        Me.Controls.Add(Me.btnAbout)
+        Me.Controls.Add(Me.btnOpenLogs)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnSetPermissions)
+        Me.Controls.Add(Me.btnChangeGameName)
+        Me.Controls.Add(Me.btnCheckForUpdate)
         Me.Controls.Add(Me.btnUpdate)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.tbGameName)
+        Me.Controls.Add(Me.cmbPavlovSelect)
         Me.ForeColor = System.Drawing.Color.Yellow
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Main"
         Me.Text = "Umbustado's Pavlov Shack Installer"
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
+        Me.StatusBar.ResumeLayout(False)
+        Me.StatusBar.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents cmbPavlovSelect As System.Windows.Forms.ComboBox
+    Friend WithEvents tbGameName As System.Windows.Forms.TextBox
     Friend WithEvents btnUpdate As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents btnCheckForUpdate As System.Windows.Forms.Button
+    Friend WithEvents btnChangeGameName As System.Windows.Forms.Button
+    Friend WithEvents btnSetPermissions As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents txtNotifier As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
-    Friend WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
+    Friend WithEvents btnOpenLogs As System.Windows.Forms.Button
+    Friend WithEvents txtConsoleDisplay As System.Windows.Forms.TextBox
+    Friend WithEvents btnAbout As System.Windows.Forms.Button
+    Friend WithEvents StatusBar As System.Windows.Forms.StatusStrip
+    Friend WithEvents ProgressBar As System.Windows.Forms.ToolStripProgressBar
 
 End Class

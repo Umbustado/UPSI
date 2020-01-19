@@ -21,7 +21,7 @@ Partial Class AboutBox1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.txtDescription = New System.Windows.Forms.Label
         Me.OKButton = New System.Windows.Forms.Button
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label6 = New System.Windows.Forms.Label
@@ -30,17 +30,16 @@ Partial Class AboutBox1
         Me.Label2 = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
-        'Label1
+        'txtDescription
         '
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Ink Free", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Yellow
-        Me.Label1.Location = New System.Drawing.Point(-3, 284)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(308, 152)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Label1"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.txtDescription.BackColor = System.Drawing.Color.Transparent
+        Me.txtDescription.Font = New System.Drawing.Font("Ink Free", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDescription.ForeColor = System.Drawing.Color.Yellow
+        Me.txtDescription.Location = New System.Drawing.Point(-3, 284)
+        Me.txtDescription.Name = "txtDescription"
+        Me.txtDescription.Size = New System.Drawing.Size(308, 152)
+        Me.txtDescription.TabIndex = 1
+        Me.txtDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'OKButton
         '
@@ -129,7 +128,7 @@ Partial Class AboutBox1
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.OKButton)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txtDescription)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -143,7 +142,7 @@ Partial Class AboutBox1
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtDescription As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
