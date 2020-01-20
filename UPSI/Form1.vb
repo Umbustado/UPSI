@@ -414,7 +414,7 @@ Public Class Main
 
     End Function
 
-    Private Sub UpdateNotifier(ByVal txtMessage As String)
+    Public Sub UpdateNotifier(ByVal txtMessage As String)
 
         txtNotifier.Text = txtMessage
         StatusBar.Refresh()

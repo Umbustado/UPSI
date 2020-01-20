@@ -101,7 +101,7 @@ Partial Class Main
         '
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Impact", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.DarkSeaGreen
+        Me.Label1.ForeColor = System.Drawing.Color.Teal
         Me.Label1.Location = New System.Drawing.Point(150, 89)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(300, 20)
@@ -113,7 +113,7 @@ Partial Class Main
         '
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Impact", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.DarkSeaGreen
+        Me.Label2.ForeColor = System.Drawing.Color.Teal
         Me.Label2.Location = New System.Drawing.Point(150, 169)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(300, 20)
@@ -185,12 +185,12 @@ Partial Class Main
         Me.txtConsoleDisplay.BackColor = System.Drawing.Color.Black
         Me.txtConsoleDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtConsoleDisplay.ForeColor = System.Drawing.Color.Yellow
-        Me.txtConsoleDisplay.Location = New System.Drawing.Point(0, -1)
+        Me.txtConsoleDisplay.Location = New System.Drawing.Point(12, 9)
         Me.txtConsoleDisplay.MaxLength = 9999999
         Me.txtConsoleDisplay.Multiline = True
         Me.txtConsoleDisplay.Name = "txtConsoleDisplay"
         Me.txtConsoleDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtConsoleDisplay.Size = New System.Drawing.Size(599, 311)
+        Me.txtConsoleDisplay.Size = New System.Drawing.Size(575, 301)
         Me.txtConsoleDisplay.TabIndex = 16
         '
         'btnAbout
@@ -219,7 +219,7 @@ Partial Class Main
         Me.txtNotifier.AutoSize = False
         Me.txtNotifier.Name = "txtNotifier"
         Me.txtNotifier.Size = New System.Drawing.Size(449, 17)
-        Me.UpdateNotifier("txtNotifier")
+        Me.txtNotifier.Text = "Notifier"
         Me.txtNotifier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ProgressBar
