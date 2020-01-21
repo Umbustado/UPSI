@@ -17,3 +17,7 @@
 
 
 (*Install package is in **UPSI/bin/Release/UPSI.publish***)
+
+To get .exe files you need to either clone or download this repository (*click the green button on the top right of this page*)
+
+If you download as a zip - don't forget to extract the files to a folder !
