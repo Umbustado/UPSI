@@ -1,3 +1,4 @@
+
 ﻿# UPSI
 *Pronounced* '*oopsy* '
 
@@ -24,3 +25,5 @@ Now v1.0.0.1
 To get .exe/.msi files you need to either clone or download this repository (*click the green button on the top right of this page*)
 
 If you download as a zip - don't forget to extract the files to a folder !
+
+## ***You can also now download the install package directly from [**here**](http://www.thesideloader.co.uk:99/upsisetup.msi)***
