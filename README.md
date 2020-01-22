@@ -1,5 +1,5 @@
 
-﻿## UPSI
+## UPSI
  
 *Pronounced* '*oopsy* '
 
