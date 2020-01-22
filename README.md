@@ -1,6 +1,4 @@
-
 ## UPSI
- 
 *Pronounced* '*oopsy* '
 
 
@@ -8,7 +6,11 @@
 ## ***You can also now download the install package directly from [**here**](http://www.thesideloader.co.uk:99/upsisetup.msi)***
 
 
-Minor update with bug fixes, UI changes & a proper .msi setup !
+Update : I've made a few tweeks, squashed a few bugs, updated the UI (it was too small !), made a proper .msi installation file (for those that don't want to or can't compile the source themselves) and also added an invite to the Pavlov Discord channel !
+
+Check out the new screenshots
+
+If you have any suggestions I'd love to hear them - just find me on the Discord Channel
 
 Now v1.0.0.1
 
@@ -23,9 +25,9 @@ Now v1.0.0.1
  - Everything a budding Pavlovian could need !!!!! :D
 
 
-(*Install package is in **UPSI/bin/Release/UPSI.publish***)
+(*Install package is in **UPSI/Single File Setup/***)
 
-To get .exe/.msi files you need to either clone or download this repository (*click the green button on the top right of this page*)
+To get the files you need to either clone or download this repository (*click the green button on the top right of this page*)
 
 If you download as a zip - don't forget to extract the files to a folder !
 
