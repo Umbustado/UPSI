@@ -1,10 +1,13 @@
-# UPSI
+﻿# UPSI
 *Pronounced* '*oopsy* '
 
 
 # ***Umbustado’s Pavlov Shack Installer***
 
- 
+Minor update with bug fixes, UI changes & a proper .msi setup !
+
+Now v1.0.0.1
+
  - For those people who don't want to use SideQuest or .bat files.
  - Always have the latest build.
  - Set your name easily.
@@ -18,6 +21,6 @@
 
 (*Install package is in **UPSI/bin/Release/UPSI.publish***)
 
-To get .exe files you need to either clone or download this repository (*click the green button on the top right of this page*)
+To get .exe/.msi files you need to either clone or download this repository (*click the green button on the top right of this page*)
 
 If you download as a zip - don't forget to extract the files to a folder !
