@@ -4,6 +4,8 @@
 
 
 # ***Umbustado’s Pavlov Shack Installer***
+## ***You can also now download the install package directly from [**here**](http://www.thesideloader.co.uk:99/upsisetup.msi)***
+
 
 Minor update with bug fixes, UI changes & a proper .msi setup !
 
@@ -26,4 +28,4 @@ To get .exe/.msi files you need to either clone or download this repository (*cl
 
 If you download as a zip - don't forget to extract the files to a folder !
 
-## ***You can also now download the install package directly from [**here**](http://www.thesideloader.co.uk:99/upsisetup.msi)***
+
