@@ -1,1 +1,1 @@
-This is a self-extracting archive of the USPI setup files
+This is a MSI installation package of USPI 

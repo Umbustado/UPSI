@@ -7,7 +7,7 @@ Imports Ionic.Zip
 
 
 Public Class Main
-    Public appData As String = GetFolderPath(SpecialFolder.LocalApplicationData) & "\UPSI"
+    Public appData As String = Environment.SystemDirectory.Substring(0, 2) & "\UPSI"
     Public Busy As Boolean = False
     Public extStorage As String
     Public WriteLog As StreamWriter
@@ -15,7 +15,8 @@ Public Class Main
     Private Sub AllOn(ByVal boolONOFF As Boolean)
 
         '   Make all form objects invisible or visible
-
+        Panel1.Visible = boolONOFF
+        Panel2.Visible = boolONOFF
         Label1.Visible = boolONOFF
         Label2.Visible = boolONOFF
         cmbPavlovSelect.Visible = boolONOFF
@@ -26,6 +27,7 @@ Public Class Main
         btnOpenLogs.Visible = boolONOFF
         btnAbout.Visible = boolONOFF
         btnUpdate.Visible = boolONOFF
+        Me.ControlBox = boolONOFF
 
     End Sub
 
@@ -35,7 +37,6 @@ Public Class Main
     End Sub
 
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         AllOn(False)
         InitialSetup()
         Me.Show()
@@ -87,6 +88,7 @@ Public Class Main
                 WriteLog = File.AppendText(strLogFileName)
             End If
             Logfile("********************************************")
+            Logfile("******         " & Application.ProductName & " v" & Application.ProductVersion & "         *******")
             Logfile("******        Program Started        *******")
             Logfile("********************************************")
 
@@ -98,6 +100,7 @@ Public Class Main
 
 
     Private Sub Logfile(ByVal txtEntry As String)
+
         WriteLog.WriteLine(DateTime.Now & " - " & txtEntry)
         WriteLog.Flush()
 
@@ -181,11 +184,13 @@ Public Class Main
     Private Sub InitialSetup()
 
         Buttons(2, 2, 2, 2, 2)
+        Me.Text = Application.ProductName & " v" & Application.ProductVersion
         txtConsoleDisplay.Visible = False
         txtNotifier.Visible = True
         ProgressBar.Value = 0
         ProgressBar.Visible = False
         UpdateNotifier("Please wait - Performing start up checks")
+        btnUpdate.Select()
         If Control.ModifierKeys = Keys.Shift Then
             ' Shift is being held down
             Select Case MsgBox("Do you want to delete UPSI folders - this will make it like you have just installed UPSI and run it for the first time ?", MsgBoxStyle.YesNo, "Umbustado's Paclov Shack Installer")
