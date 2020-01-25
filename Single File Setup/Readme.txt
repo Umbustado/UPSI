@@ -1,1 +1,0 @@
-This is a MSI installation package of USPI 

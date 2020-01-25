@@ -4,6 +4,7 @@ Imports System.Text.RegularExpressions
 Imports System.IO
 Imports System.IO.Compression
 Imports Ionic.Zip
+Imports System.Configuration.install
 
 
 Public Class Main
@@ -11,6 +12,9 @@ Public Class Main
     Public Busy As Boolean = False
     Public extStorage As String
     Public WriteLog As StreamWriter
+    Public QuietDownload As Boolean = False
+    '   Public UpdateServer As String = "http://192.168.1.225/" ' internal test server
+    Public UpdateServer As String = "http://thesideloader.co.uk/"
 
     Private Sub AllOn(ByVal boolONOFF As Boolean)
 
@@ -40,35 +44,90 @@ Public Class Main
         AllOn(False)
         InitialSetup()
         Me.Show()
-        ResponsiveSleep(5000)
+        ResponsiveSleep(1000)
         CheckAppData()
+        Logfile("Checking for program update")
+        CheckForAppUpdates(UpdateServer)
         CheckForUpdates()
         Buttons(0, 1, 1, 1, 1)
+        btnUpdate.Select()
         AllOn(True)
+        ResponsiveSleep(2000)
+        UpdateNotifier("Ready")
+    End Sub
+    Private Sub CheckForAppUpdates(ByVal txtServer As String)
+        Dim txtReturn As String
+        WebDownload(txtServer & "upsi.txt", appData & "\temp\ver.txt", "Please wait - Checking for updates", True)
+        Dim fsUpdate As New StreamReader(appData & "\temp\ver.txt")
+        txtReturn = fsUpdate.ReadLine()
+        fsUpdate.Close()
+        File.Delete(appData & "\temp\ver.txt")
+        Logfile("Found " & txtReturn)
+        If txtReturn.Contains(Application.ProductVersion) = False Then
+            UpdateNotifier("Program update found")
+            Select Case MsgBox("Update to version " & txtReturn & " is available.  Click OK to start update", MsgBoxStyle.YesNo, Application.ProductName & " v" & Application.ProductVersion)
+                Case MsgBoxResult.Yes
+                    Logfile("Update triggered")
+                    WebDownload(txtServer & "upsisetup.msi", appData & "\temp\upsisetup.msi", "Please wait - Downloading program update", True)
+                    Logfile("running new setup")
+                    _Run("msiexec.exe", " /i " & appData & "\temp\upsisetup.msi /quiet")
+                    End
+                Case MsgBoxResult.No
+            End Select
+        End If
+        ResponsiveSleep(2000)
+        UpdateNotifier("Ready")
+    End Sub
 
+    Private Sub InitialSetup()
+
+        Buttons(2, 2, 2, 2, 2)
+        Me.Text = Application.ProductName & " v" & Application.ProductVersion
+        txtConsoleDisplay.Text = ""
+        txtConsoleDisplay.Visible = False
+        txtNotifier.Visible = True
+        ProgressBar.Value = 0
+        ProgressBar.Visible = False
+        UpdateNotifier("Please wait - Performing start up checks")
+        If Control.ModifierKeys = Keys.Shift Then
+            ' Shift is being held down
+            Select Case MsgBox("Do you want to delete UPSI folders - this will make it like you have just installed UPSI and run it for the first time ?", MsgBoxStyle.YesNo, "Umbustado's Paclov Shack Installer")
+                Case MsgBoxResult.Yes
+                    System.IO.Directory.Delete(appData, True)
+                Case MsgBoxResult.No
+            End Select
+        End If
     End Sub
 
     Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
 
         Install_Pavlov()
+        ResponsiveSleep(2000)
+        UpdateNotifier("Ready")
 
     End Sub
 
     Private Sub btnCheckForUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCheckForUpdate.Click
 
         CheckForUpdates()
+        ResponsiveSleep(2000)
+        UpdateNotifier("Ready")
 
     End Sub
 
     Private Sub btnChangeGameName_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnChangeGameName.Click
 
         ChangeName()
+        ResponsiveSleep(2000)
+        UpdateNotifier("Ready")
 
     End Sub
 
     Private Sub btnSetPermissions_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSetPermissions.Click
 
         SetPermissions()
+        ResponsiveSleep(2000)
+        UpdateNotifier("Ready")
 
     End Sub
 
@@ -133,6 +192,7 @@ Public Class Main
             txtReturn = _Run(appData & "\ADB\platform-tools\adb.exe", "shell pm grant com.vankrupt.pavlov android.permission.WRITE_EXTERNAL_STORAGE")
             txtConsole(txtReturn)
             txtConsole("")
+            txtReturn = _Run(appData & "\ADB\platform-tools\adb.exe", " kill-server")
             txtConsole("All Done")
             UpdateNotifier("All Done")
             ResponsiveSleep(5000)
@@ -169,6 +229,7 @@ Public Class Main
             txtReturn = _Run(appData & "\ADB\platform-tools\adb.exe", "push " & srcDir & "name.txt " & extStorage & "/pavlov.name.txt")
             txtConsole(txtReturn)
             txtConsole("")
+            txtReturn = _Run(appData & "\ADB\platform-tools\adb.exe", " kill-server")
             txtConsole("All Done")
             UpdateNotifier("All Done")
             ResponsiveSleep(5000)
@@ -180,31 +241,28 @@ Public Class Main
 
     End Sub
 
-
-    Private Sub InitialSetup()
-
-        Buttons(2, 2, 2, 2, 2)
-        Me.Text = Application.ProductName & " v" & Application.ProductVersion
-        txtConsoleDisplay.Visible = False
-        txtNotifier.Visible = True
-        ProgressBar.Value = 0
-        ProgressBar.Visible = False
-        UpdateNotifier("Please wait - Performing start up checks")
-        btnUpdate.Select()
-        If Control.ModifierKeys = Keys.Shift Then
-            ' Shift is being held down
-            Select Case MsgBox("Do you want to delete UPSI folders - this will make it like you have just installed UPSI and run it for the first time ?", MsgBoxStyle.YesNo, "Umbustado's Paclov Shack Installer")
-                Case MsgBoxResult.Yes
-                    System.IO.Directory.Delete(appData, True)
-                Case MsgBoxResult.No
-            End Select
-        End If
-    End Sub
     Private Sub CheckAppData()
 
         If System.IO.Directory.Exists(appData) Then
+            System.IO.Directory.Delete(appData & "\temp\", True)
+            ResponsiveSleep(500)
+            System.IO.Directory.CreateDirectory(appData & "\temp")
+            If Not System.IO.Directory.Exists(appData & "\logs") Then
+                System.IO.Directory.CreateDirectory(appData & "\logs")
+            End If
             OpenLogFile()
             Logfile("Checking system folders")
+            Logfile("Checking ADB")
+            If Not System.IO.Directory.Exists(appData & "\adb") Then
+                Logfile("Downloading ADB files")
+                WebDownload("https://dl.google.com/android/repository/platform-tools-latest-windows.zip", appData & "\temp\ADB.zip", "Downloading ADB tools", False)
+                UnpackZip(appData & "\temp\", appData & "\", "ADB.zip")
+                System.IO.File.Delete(appData & "\temp\ADB.zip")
+            End If
+            Logfile("Checking downloads")
+            If Not System.IO.Directory.Exists(appData & "\downloads") Then
+                System.IO.Directory.CreateDirectory(appData & "\downloads")
+            End If
             Logfile("System folders found - filling combo")
             FillCombo()
         Else
@@ -213,10 +271,12 @@ Public Class Main
             System.IO.Directory.CreateDirectory(appData & "\downloads")
             System.IO.Directory.CreateDirectory(appData & "\logs")
             OpenLogFile()
-            Logfile("Checking system folders")
+            Logfile("System folders not found !")
             Logfile("Creating system folders")
-            WebDownload("https://dl.google.com/android/repository/platform-tools-latest-windows.zip", appData & "\temp\ADB.zip", "Downloading ADB tools")
+            Logfile("Downloading ADB files")
+            WebDownload("https://dl.google.com/android/repository/platform-tools-latest-windows.zip", appData & "\temp\ADB.zip", "Downloading ADB tools", False)
             UnpackZip(appData & "\temp\", appData & "\", "ADB.zip")
+            System.IO.File.Delete(appData & "\temp\ADB.zip")
         End If
         Buttons(0, 0, 1, 1, 1)
 
@@ -233,8 +293,10 @@ Public Class Main
             Logfile("Pavlov build is outdated")
             UpdateNotifier("Pavlov build is outdated - Downloading new build")
             ResponsiveSleep(2000)
-            WebDownload("http://34.98.81.223/" & txtZipName, appData & "\temp\" & txtZipName, "Downloading " & txtZipName)
-            UnpackZip(appData & "\temp\", appData & "\downloads\", txtZipName)
+            WebDownload("http://34.98.81.223/" & txtZipName, appData & "\temp\" & txtZipName, "Downloading " & txtZipName, False)
+            UnpackZip(appData & "\temp\", appData & "\downloads\", txtZipName, ".apk\.obb\name.txt")
+            Logfile("Deleting " & txtZipName)
+            System.IO.File.Delete(appData & "\temp\" & txtZipName)
             FillCombo()
             FillName()
         End If
@@ -242,12 +304,15 @@ Public Class Main
 
     End Sub
 
-    Private Sub WebDownload(ByVal txtSource As String, ByVal txtDestination As String, ByVal txtMessage As String)
+    Private Sub WebDownload(ByVal txtSource As String, ByVal txtDestination As String, ByVal txtMessage As String, ByVal boolQuiet As Boolean)
 
-        Logfile("Downloading " & txtSource)
-        UpdateNotifier(txtMessage)
-        ProgressBar.Value = 0
-        ProgressBar.Visible = True
+        QuietDownload = boolQuiet
+        If QuietDownload = False Then
+            Logfile("Downloading " & txtSource)
+            UpdateNotifier(txtMessage)
+            ProgressBar.Value = 0
+            ProgressBar.Visible = True
+        End If
         Busy = True
         Dim _WebClient As New System.Net.WebClient()
         AddHandler _WebClient.DownloadFileCompleted, AddressOf _DownloadFileCompleted
@@ -261,10 +326,14 @@ Public Class Main
 
     Private Sub _DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs)
 
-        Logfile("Download completed")
-        UpdateNotifier("Download completed")
-        ProgressBar.Value = 0
-        ProgressBar.Visible = False
+        If QuietDownload = False Then
+            Logfile("Download completed")
+            UpdateNotifier("Download completed")
+            ProgressBar.Value = 0
+            ProgressBar.Visible = False
+        Else
+            QuietDownload = False
+        End If
         Busy = False
         ResponsiveSleep(2000)
 
@@ -272,8 +341,10 @@ Public Class Main
 
     Private Sub _DownloadProgressChanged(ByVal sender As Object, ByVal e As System.Net.DownloadProgressChangedEventArgs)
 
-        UpdateNotifier("Downloading " & e.BytesReceived.ToString("N0") & " of " & e.TotalBytesToReceive.ToString("N0") & " bytes (" & e.ProgressPercentage.ToString & "%)")
-        ProgressBar.Value = e.ProgressPercentage
+        If QuietDownload = False Then
+            UpdateNotifier("Downloading " & e.BytesReceived.ToString("N0") & " of " & e.TotalBytesToReceive.ToString("N0") & " bytes (" & e.ProgressPercentage.ToString & "%)")
+            ProgressBar.Value = e.ProgressPercentage
+        End If
 
     End Sub
 
@@ -287,9 +358,9 @@ Public Class Main
             arrDir = Split(Dir.ToString, "\")
             Package = arrDir(UBound(arrDir))
             cmbPavlovSelect.Items.Add(Package)
-            Logfile(Package)
+            Logfile("Adding " & Package)
         Next
-        If cmbPavlovSelect.Items.Count > 0 Then cmbPavlovSelect.SelectedIndex = 0
+        If cmbPavlovSelect.Items.Count > 0 Then cmbPavlovSelect.SelectedIndex = cmbPavlovSelect.Items.Count - 1
 
     End Sub
 
@@ -309,26 +380,35 @@ Public Class Main
 
     End Sub
 
-    Public Sub UnpackZip(ByVal txtSource As String, ByVal txtDestination As String, ByVal txtFilename As String)
-
+    Public Sub UnpackZip(ByVal txtSource As String, ByVal txtDestination As String, ByVal txtFilename As String, Optional ByVal txtFileType As String = "")
+        Dim boolFlag As Boolean = False
+        Dim arrFlagFile As Array
+        Dim txtFlagFile As String
         Dim ZipToUnpack As String = txtSource & txtFilename
         Dim TargetDir As String = txtDestination & txtFilename.Substring(0, Len(txtFilename) - 4)
         Logfile("Unpacking " & ZipToUnpack & " to " & TargetDir)
+        arrFlagFile = Split(txtFileType, "\")
         ProgressBar.Value = 0
         ProgressBar.Visible = True
+        txtConsoleDisplay.Visible = True
         Using zip1 As ZipFile = ZipFile.Read(ZipToUnpack)
             AddHandler zip1.ExtractProgress, AddressOf MyExtractProgress
             Dim e As ZipEntry
             For Each e In zip1
-                e.Extract(TargetDir, ExtractExistingFileAction.OverwriteSilently)
-                Logfile(e.FileName)
+                For Each txtFlagFile In arrFlagFile
+                    If e.FileName.EndsWith(txtFlagFile) = True Then
+                        txtConsole("Extracting " & e.FileName)
+                        Logfile(e.FileName)
+                        e.Extract(TargetDir, ExtractExistingFileAction.OverwriteSilently)
+                    End If
+                Next
             Next
         End Using
+        txtConsoleDisplay.Visible = False
+        txtConsoleDisplay.Text = ""
         Logfile("Done")
         UpdateNotifier("Done")
         ProgressBar.Visible = False
-        Logfile("Deleting " & ZipToUnpack)
-        System.IO.File.Delete(ZipToUnpack)
 
     End Sub
 
@@ -340,7 +420,7 @@ Public Class Main
         Else
             PCDone = e.BytesTransferred / (e.TotalBytesToTransfer / 100)
         End If
-        UpdateNotifier("Extracting " & e.CurrentEntry.ToString.Substring(10, Len(e.CurrentEntry.ToString) - 10) & " (" & PCDone.ToString & "%)")
+        UpdateNotifier(e.CurrentEntry.FileName & " Progress " & PCDone.ToString & "%")
         ProgressBar.Value = PCDone
 
     End Sub
@@ -582,6 +662,7 @@ Public Class Main
             txtReturn = _Run(appData & "\ADB\platform-tools\adb.exe", "shell mv " & extStorage & "/Download/obb/com.vankrupt.pavlov " & extStorage & "/Android/obb/com.vankrupt.pavlov")
             txtConsole(txtReturn)
             txtConsole("")
+            txtReturn = _Run(appData & "\ADB\platform-tools\adb.exe", " kill-server")
             txtConsole("All Done.")
             UpdateNotifier("All Done")
             ResponsiveSleep(5000)
@@ -615,6 +696,7 @@ Public Class Main
         AboutBox1.ShowDialog()
 
     End Sub
+
 End Class
 
 
