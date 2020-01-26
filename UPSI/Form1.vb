@@ -244,9 +244,13 @@ Public Class Main
     Private Sub CheckAppData()
 
         If System.IO.Directory.Exists(appData) Then
-            System.IO.Directory.Delete(appData & "\temp\", True)
-            ResponsiveSleep(500)
-            System.IO.Directory.CreateDirectory(appData & "\temp")
+            If System.IO.Directory.Exists(appData & "\temp") Then
+                System.IO.Directory.Delete(appData & "\temp\", True)
+                ResponsiveSleep(500)
+                System.IO.Directory.CreateDirectory(appData & "\temp")
+            Else
+                System.IO.Directory.CreateDirectory(appData & "\temp")
+            End If
             If Not System.IO.Directory.Exists(appData & "\logs") Then
                 System.IO.Directory.CreateDirectory(appData & "\logs")
             End If
@@ -290,17 +294,28 @@ Public Class Main
             Logfile("Local build is current")
             UpdateNotifier("Pavlov build is current")
         Else
-            Logfile("Pavlov build is outdated")
-            UpdateNotifier("Pavlov build is outdated - Downloading new build")
-            ResponsiveSleep(2000)
-            WebDownload("http://34.98.81.223/" & txtZipName, appData & "\temp\" & txtZipName, "Downloading " & txtZipName, False)
-            UnpackZip(appData & "\temp\", appData & "\downloads\", txtZipName, ".apk\.obb\name.txt")
-            Logfile("Deleting " & txtZipName)
-            System.IO.File.Delete(appData & "\temp\" & txtZipName)
-            FillCombo()
-            FillName()
+            Logfile("Pavlov build is outdated - asking for download")
+            UpdateNotifier("Pavlov build is outdated - Please download the new build")
+            Select Case MsgBox(txtZipName.Substring(0, Len(txtZipName) - 4) & " is available." & vbCrLf & vbCrLf & "Click Yes to download now or No to delay until later", MsgBoxStyle.YesNo, Application.ProductName & " v" & Application.ProductVersion)
+                Case MsgBoxResult.Yes
+                    UpdateNotifier("Pavlov build is outdated - Downloading new build")
+                    Logfile("Update started")
+                    ResponsiveSleep(2000)
+                    WebDownload("http://34.98.81.223/" & txtZipName, appData & "\temp\" & txtZipName, "Downloading " & txtZipName, False)
+                    UnpackZip(appData & "\temp\", appData & "\downloads\", txtZipName, ".apk\.obb\name.txt")
+                    Logfile("Deleting " & txtZipName)
+                    System.IO.File.Delete(appData & "\temp\" & txtZipName)
+                    FillCombo()
+                    FillName()
+                Case MsgBoxResult.No
+                    UpdateNotifier("Pavlov build is outdated - Please download the new build")
+                    Logfile("Update delayed")
+                    FillCombo()
+                    FillName()
+
+            End Select
         End If
-        Buttons(1, 1, 0, 0, 0)
+        '       Buttons(1, 1, 0, 0, 0)
 
     End Sub
 
@@ -360,19 +375,27 @@ Public Class Main
             cmbPavlovSelect.Items.Add(Package)
             Logfile("Adding " & Package)
         Next
-        If cmbPavlovSelect.Items.Count > 0 Then cmbPavlovSelect.SelectedIndex = cmbPavlovSelect.Items.Count - 1
+        If cmbPavlovSelect.Items.Count > 0 Then
+            cmbPavlovSelect.SelectedIndex = cmbPavlovSelect.Items.Count - 1
+        Else
+            Buttons(2, 0, 0, 0, 0)
+        End If
 
     End Sub
 
     Private Sub FillName()
-
-        Logfile("Filling name box")
-        If System.IO.File.Exists(appData & "\downloads\" & cmbPavlovSelect.SelectedItem.ToString & "\name.txt") Then
-            Dim fileReader As System.IO.StreamReader
-            fileReader = My.Computer.FileSystem.OpenTextFileReader(appData & "\downloads\" & cmbPavlovSelect.SelectedItem.ToString & "\name.txt")
-            tbGameName.Text = fileReader.ReadLine()
-            fileReader.Close()
-            Logfile("using " & appData & "\downloads\" & cmbPavlovSelect.SelectedItem.ToString & "\name.txt """ & tbGameName.Text & """")
+        If cmbPavlovSelect.Items.Count > 0 Then
+            Logfile("Filling name box")
+            If System.IO.File.Exists(appData & "\downloads\" & cmbPavlovSelect.SelectedItem.ToString & "\name.txt") Then
+                Dim fileReader As System.IO.StreamReader
+                fileReader = My.Computer.FileSystem.OpenTextFileReader(appData & "\downloads\" & cmbPavlovSelect.SelectedItem.ToString & "\name.txt")
+                tbGameName.Text = fileReader.ReadLine()
+                fileReader.Close()
+                Logfile("using " & appData & "\downloads\" & cmbPavlovSelect.SelectedItem.ToString & "\name.txt """ & tbGameName.Text & """")
+            Else
+                Logfile("Using default name ""Change_Me""")
+                tbGameName.Text = "Change_Me"
+            End If
         Else
             Logfile("Using default name ""Change_Me""")
             tbGameName.Text = "Change_Me"
