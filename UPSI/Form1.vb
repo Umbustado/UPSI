@@ -54,6 +54,7 @@ Public Class Main
         AllOn(True)
         ResponsiveSleep(2000)
         UpdateNotifier("Ready")
+        If cmbPavlovSelect.Items.Count > 0 Then Buttons(1, 0, 0, 0, 0)
     End Sub
     Private Sub CheckForAppUpdates(ByVal txtServer As String)
         Dim txtReturn As String
