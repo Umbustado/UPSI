@@ -26,10 +26,10 @@ Partial Class Main
         Me.btnChangeGameName = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
+        Me.Title2 = New System.Windows.Forms.Label
+        Me.Title1 = New System.Windows.Forms.Label
+        Me.Title3 = New System.Windows.Forms.Label
+        Me.Title4 = New System.Windows.Forms.Label
         Me.txtConsoleDisplay = New System.Windows.Forms.TextBox
         Me.StatusBar = New System.Windows.Forms.StatusStrip
         Me.txtNotifier = New System.Windows.Forms.ToolStripStatusLabel
@@ -40,6 +40,8 @@ Partial Class Main
         Me.btnSetPermissions = New System.Windows.Forms.Button
         Me.btnOpenLogs = New System.Windows.Forms.Button
         Me.btnAbout = New System.Windows.Forms.Button
+        Me.OldFashionedWay = New System.Windows.Forms.Button
+        Me.CheckPermissions = New System.Windows.Forms.Button
         Me.StatusBar.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -123,54 +125,54 @@ Partial Class Main
         Me.Label2.Text = "In-Game Name"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label3
+        'Title2
         '
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Arial Black", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(193, 20)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(318, 77)
-        Me.Label3.TabIndex = 10
-        Me.Label3.Text = "PAVLOV"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Title2.BackColor = System.Drawing.Color.Transparent
+        Me.Title2.Font = New System.Drawing.Font("Arial Black", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Title2.ForeColor = System.Drawing.Color.White
+        Me.Title2.Location = New System.Drawing.Point(193, 20)
+        Me.Title2.Name = "Title2"
+        Me.Title2.Size = New System.Drawing.Size(318, 77)
+        Me.Title2.TabIndex = 10
+        Me.Title2.Text = "PAVLOV"
+        Me.Title2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label4
+        'Title1
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Teal
-        Me.Label4.Location = New System.Drawing.Point(203, 9)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(150, 26)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Umbustado's"
+        Me.Title1.AutoSize = True
+        Me.Title1.BackColor = System.Drawing.Color.Transparent
+        Me.Title1.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Title1.ForeColor = System.Drawing.Color.Teal
+        Me.Title1.Location = New System.Drawing.Point(203, 9)
+        Me.Title1.Name = "Title1"
+        Me.Title1.Size = New System.Drawing.Size(150, 26)
+        Me.Title1.TabIndex = 11
+        Me.Title1.Text = "Umbustado's"
         '
-        'Label5
+        'Title3
         '
-        Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Arial", 30.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(486, 51)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(138, 46)
-        Me.Label5.TabIndex = 12
-        Me.Label5.Text = "Shack"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Title3.BackColor = System.Drawing.Color.Transparent
+        Me.Title3.Font = New System.Drawing.Font("Arial", 30.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Title3.ForeColor = System.Drawing.Color.Red
+        Me.Title3.Location = New System.Drawing.Point(486, 51)
+        Me.Title3.Name = "Title3"
+        Me.Title3.Size = New System.Drawing.Size(138, 46)
+        Me.Title3.TabIndex = 12
+        Me.Title3.Text = "Shack"
+        Me.Title3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label6
+        'Title4
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Teal
-        Me.Label6.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Label6.Location = New System.Drawing.Point(518, 97)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(97, 26)
-        Me.Label6.TabIndex = 13
-        Me.Label6.Text = "Installer"
+        Me.Title4.AutoSize = True
+        Me.Title4.BackColor = System.Drawing.Color.Transparent
+        Me.Title4.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Title4.ForeColor = System.Drawing.Color.Teal
+        Me.Title4.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Title4.Location = New System.Drawing.Point(518, 97)
+        Me.Title4.Name = "Title4"
+        Me.Title4.Size = New System.Drawing.Size(97, 26)
+        Me.Title4.TabIndex = 13
+        Me.Title4.Text = "Installer"
         '
         'txtConsoleDisplay
         '
@@ -249,7 +251,7 @@ Partial Class Main
         Me.btnCheckForUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCheckForUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCheckForUpdate.ForeColor = System.Drawing.Color.Black
-        Me.btnCheckForUpdate.Location = New System.Drawing.Point(619, 171)
+        Me.btnCheckForUpdate.Location = New System.Drawing.Point(619, 150)
         Me.btnCheckForUpdate.Name = "btnCheckForUpdate"
         Me.btnCheckForUpdate.Size = New System.Drawing.Size(134, 30)
         Me.btnCheckForUpdate.TabIndex = 4
@@ -267,9 +269,9 @@ Partial Class Main
         Me.btnSetPermissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSetPermissions.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSetPermissions.ForeColor = System.Drawing.Color.Black
-        Me.btnSetPermissions.Location = New System.Drawing.Point(619, 201)
+        Me.btnSetPermissions.Location = New System.Drawing.Point(619, 181)
         Me.btnSetPermissions.Name = "btnSetPermissions"
-        Me.btnSetPermissions.Size = New System.Drawing.Size(134, 30)
+        Me.btnSetPermissions.Size = New System.Drawing.Size(134, 29)
         Me.btnSetPermissions.TabIndex = 6
         Me.btnSetPermissions.Text = "Set Permissions"
         Me.btnSetPermissions.UseVisualStyleBackColor = False
@@ -285,7 +287,7 @@ Partial Class Main
         Me.btnOpenLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnOpenLogs.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOpenLogs.ForeColor = System.Drawing.Color.Black
-        Me.btnOpenLogs.Location = New System.Drawing.Point(619, 303)
+        Me.btnOpenLogs.Location = New System.Drawing.Point(619, 242)
         Me.btnOpenLogs.Name = "btnOpenLogs"
         Me.btnOpenLogs.Size = New System.Drawing.Size(134, 30)
         Me.btnOpenLogs.TabIndex = 14
@@ -303,12 +305,48 @@ Partial Class Main
         Me.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAbout.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAbout.ForeColor = System.Drawing.Color.Black
-        Me.btnAbout.Location = New System.Drawing.Point(619, 333)
+        Me.btnAbout.Location = New System.Drawing.Point(619, 273)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Size = New System.Drawing.Size(134, 30)
         Me.btnAbout.TabIndex = 17
         Me.btnAbout.Text = "About"
         Me.btnAbout.UseVisualStyleBackColor = False
+        '
+        'OldFashionedWay
+        '
+        Me.OldFashionedWay.BackColor = System.Drawing.Color.PaleGoldenrod
+        Me.OldFashionedWay.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.OldFashionedWay.FlatAppearance.BorderSize = 0
+        Me.OldFashionedWay.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green
+        Me.OldFashionedWay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green
+        Me.OldFashionedWay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.OldFashionedWay.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OldFashionedWay.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OldFashionedWay.ForeColor = System.Drawing.Color.Black
+        Me.OldFashionedWay.Location = New System.Drawing.Point(619, 304)
+        Me.OldFashionedWay.Name = "OldFashionedWay"
+        Me.OldFashionedWay.Size = New System.Drawing.Size(134, 78)
+        Me.OldFashionedWay.TabIndex = 22
+        Me.OldFashionedWay.Text = "Do It The Old Fashioned Way (.bat method)"
+        Me.OldFashionedWay.UseVisualStyleBackColor = False
+        '
+        'CheckPermissions
+        '
+        Me.CheckPermissions.BackColor = System.Drawing.Color.PaleGoldenrod
+        Me.CheckPermissions.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.CheckPermissions.FlatAppearance.BorderSize = 0
+        Me.CheckPermissions.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green
+        Me.CheckPermissions.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green
+        Me.CheckPermissions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CheckPermissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckPermissions.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckPermissions.ForeColor = System.Drawing.Color.Black
+        Me.CheckPermissions.Location = New System.Drawing.Point(619, 211)
+        Me.CheckPermissions.Name = "CheckPermissions"
+        Me.CheckPermissions.Size = New System.Drawing.Size(134, 30)
+        Me.CheckPermissions.TabIndex = 23
+        Me.CheckPermissions.Text = "Check Permissions"
+        Me.CheckPermissions.UseVisualStyleBackColor = False
         '
         'Main
         '
@@ -318,17 +356,19 @@ Partial Class Main
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(820, 460)
         Me.Controls.Add(Me.txtConsoleDisplay)
+        Me.Controls.Add(Me.CheckPermissions)
+        Me.Controls.Add(Me.OldFashionedWay)
         Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.btnOpenLogs)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnSetPermissions)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.btnCheckForUpdate)
-        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Title3)
         Me.Controls.Add(Me.StatusBar)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Title4)
+        Me.Controls.Add(Me.Title1)
+        Me.Controls.Add(Me.Title2)
         Me.ForeColor = System.Drawing.Color.Yellow
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -352,10 +392,10 @@ Partial Class Main
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtNotifier As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Title2 As System.Windows.Forms.Label
+    Friend WithEvents Title1 As System.Windows.Forms.Label
+    Friend WithEvents Title3 As System.Windows.Forms.Label
+    Friend WithEvents Title4 As System.Windows.Forms.Label
     Friend WithEvents txtConsoleDisplay As System.Windows.Forms.TextBox
     Friend WithEvents StatusBar As System.Windows.Forms.StatusStrip
     Friend WithEvents ProgressBar As System.Windows.Forms.ToolStripProgressBar
@@ -365,5 +405,7 @@ Partial Class Main
     Friend WithEvents btnSetPermissions As System.Windows.Forms.Button
     Friend WithEvents btnOpenLogs As System.Windows.Forms.Button
     Friend WithEvents btnAbout As System.Windows.Forms.Button
+    Friend WithEvents OldFashionedWay As System.Windows.Forms.Button
+    Friend WithEvents CheckPermissions As System.Windows.Forms.Button
 
 End Class

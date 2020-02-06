@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="UPSI.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="UPSI" version="1.0.0.2" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="UPSI" version="1.0.0.3" language="neutral" processorArchitecture="msil" />
     <commandLine file="UPSI.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -39,14 +39,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UPSI.exe" size="712704">
-      <assemblyIdentity name="UPSI" version="1.0.0.2" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UPSI.exe" size="716800">
+      <assemblyIdentity name="UPSI" version="1.0.0.3" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>NwHJYmoIMERVAVqPqLvlHTzTEXk=</dsig:DigestValue>
+        <dsig:DigestValue>cAmIlMUG2PbnEXaYk9Pv6yieaL0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

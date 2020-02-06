@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0EABFB67282FF68FF53E68CD57F9133D"
+        "OwnerKey" = "8:_D02E8AB6DC8644C78E38CDBD99679C28"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4736DE597A4E422C9B1B6007BAD83AA5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,12 +39,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FF0159CC051A81BD81656819943A3FDC"
-        "OwnerKey" = "8:_D02E8AB6DC8644C78E38CDBD99679C28"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D02E8AB6DC8644C78E38CDBD99679C28"
         "MsmSig" = "8:_UNDEFINED"
@@ -46,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FF0159CC051A81BD81656819943A3FDC"
+        "OwnerKey" = "8:_0EABFB67282FF68FF53E68CD57F9133D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -149,6 +149,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0EABFB67282FF68FF53E68CD57F9133D"
+            {
+            "AssemblyRegister" = "3:2"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0EABFB67282FF68FF53E68CD57F9133D"
+                    {
+                    "Name" = "8:Ionic.Zip.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Ionic.Zip.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_729ECCEE996D47499E4794BDFFE0D422"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4736DE597A4E422C9B1B6007BAD83AA5"
             {
             "SourcePath" = "8:..\\..\\..\\..\\..\\Pictures\\banner.jpg"
@@ -187,37 +218,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FF0159CC051A81BD81656819943A3FDC"
-            {
-            "AssemblyRegister" = "3:2"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_FF0159CC051A81BD81656819943A3FDC"
-                    {
-                    "Name" = "8:Ionic.Zip.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Ionic.Zip.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_729ECCEE996D47499E4794BDFFE0D422"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -297,14 +297,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:UPSI"
-        "ProductCode" = "8:{1A7E686D-D037-4542-A396-8C93EF42A17A}"
-        "PackageCode" = "8:{803164B0-C418-4F42-9BEA-920D44828D2F}"
+        "ProductCode" = "8:{4D44DEE9-9B65-4017-9FB4-BB6C707FB3AC}"
+        "PackageCode" = "8:{C152248B-20EC-4399-8731-783A52C59E11}"
         "UpgradeCode" = "8:{27095AF7-4063-441A-9FD7-728373BFB694}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.2"
+        "ProductVersion" = "8:1.0.3"
         "Manufacturer" = "8:Umbustado"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

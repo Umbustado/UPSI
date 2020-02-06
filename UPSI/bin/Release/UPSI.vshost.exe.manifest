@@ -39,14 +39,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UPSI.exe" size="712704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UPSI.exe" size="716800">
       <assemblyIdentity name="UPSI" version="1.0.0.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>aH4qwg9FWzS2SSrPne5xd2FcNaQ=</dsig:DigestValue>
+        <dsig:DigestValue>GNXN3ubmMYME+GpBlKS7aehciB0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

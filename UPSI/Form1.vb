@@ -19,6 +19,7 @@ Public Class Main
     Private Sub AllOn(ByVal boolONOFF As Boolean)
 
         '   Make all form objects invisible or visible
+        Titles(boolONOFF, 0)
         Panel1.Visible = boolONOFF
         Panel2.Visible = boolONOFF
         Label1.Visible = boolONOFF
@@ -31,9 +32,27 @@ Public Class Main
         btnOpenLogs.Visible = boolONOFF
         btnAbout.Visible = boolONOFF
         btnUpdate.Visible = boolONOFF
+        OldFashionedWay.Visible = boolONOFF
+        CheckPermissions.Visible = boolONOFF
         Me.ControlBox = boolONOFF
 
     End Sub
+
+    Public Sub Titles(ByVal State As Boolean, Optional ByVal Delay As Integer = 0)
+
+        Title1.Visible = State
+        ResponsiveSleep(Delay)
+        Title2.Visible = State
+        ResponsiveSleep(Delay)
+        Title3.Visible = State
+        ResponsiveSleep(Delay)
+        Title4.Visible = State
+
+
+    End Sub
+
+
+
 
     Private Sub Main_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Logfile("Program Closing")
@@ -51,6 +70,8 @@ Public Class Main
         CheckForUpdates()
         Buttons(0, 1, 1, 1, 1)
         btnUpdate.Select()
+        Titles(True, 1000)
+        ResponsiveSleep(1000)
         AllOn(True)
         ResponsiveSleep(2000)
         UpdateNotifier("Ready")
@@ -607,6 +628,8 @@ Public Class Main
 
         If Install = 1 Then btnUpdate.Enabled = True
         If Install = 2 Then btnUpdate.Enabled = False
+        If Install = 1 Then OldFashionedWay.Enabled = True
+        If Install = 2 Then OldFashionedWay.Enabled = False
         If Update = 1 Then btnCheckForUpdate.Enabled = True
         If Update = 2 Then btnCheckForUpdate.Enabled = False
         If Changename = 1 Then btnChangeGameName.Enabled = True
@@ -721,6 +744,58 @@ Public Class Main
 
     End Sub
 
+    Private Sub OldFashionedWay_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OldFashionedWay.Click
+        Select Case MsgBox("This will download the original .bat method of installing Pavlov" & vbCrLf & "and start the installation process." & vbCrLf & vbCrLf & "Connect your Quest now and click Yes to proceed or click No to cancel", MsgBoxStyle.YesNo, Application.ProductName & " " & Application.ProductVersion)
+            Case MsgBoxResult.Yes
+                Logfile("Initiating .bat method")
+                WebDownload(UpdateServer & "bat.zip", appData & "\temp\" & cmbPavlovSelect.SelectedItem & ".zip", "Please wait - Downloading .bat method", False)
+                UnpackZip(appData & "\temp\", appData & "\downloads\", cmbPavlovSelect.SelectedItem & ".zip")
+                System.IO.File.Delete(appData & "\temp\bat.zip")
+                WriteNameToFile(tbGameName.Text, appData & "\downloads\" & cmbPavlovSelect.SelectedItem & "\")
+                Logfile("Starting install.bat")
+                Dim myProcess As Process = New Process()
+                myProcess.StartInfo.FileName = "cmd.exe"
+                myProcess.StartInfo.UseShellExecute = False
+                myProcess.StartInfo.CreateNoWindow = False
+                myProcess.StartInfo.RedirectStandardInput = False
+                myProcess.StartInfo.RedirectStandardOutput = False
+                myProcess.StartInfo.RedirectStandardError = False
+                myProcess.StartInfo.WorkingDirectory = appData & "\downloads\" & cmbPavlovSelect.SelectedItem & "\"
+                myProcess.StartInfo.Arguments = "/c " & appData & "\downloads\" & cmbPavlovSelect.SelectedItem & "\install.bat"
+                myProcess.Start()
+                Do While myProcess.HasExited = False
+                    ResponsiveSleep(500)
+                Loop
+                myProcess.Close()
+                _Run(appData & "\ADB\platform-tools\adb.exe", " kill-server")
+                Logfile("Finished install.bat")
+
+
+            Case MsgBoxResult.No
+
+        End Select
+    End Sub
+
+    Private Sub CheckPermissions_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckPermissions.Click
+        Logfile("Getting Permissions")
+        Dim txtReturn As String = ""
+        If GetQuest() = True Then
+            UpdateNotifier("Getting Permissions ......")
+            txtConsoleDisplay.Clear()
+            txtConsoleDisplay.Visible = True
+            txtReturn = _Run(appData & "\ADB\platform-tools\adb.exe", "shell dumpsys package com.vankrupt.pavlov")
+            txtConsole(txtReturn)
+            txtReturn = _Run(appData & "\ADB\platform-tools\adb.exe", " kill-server")
+            txtConsole("All Done")
+            UpdateNotifier("All Done")
+            MsgBox("Click OK to close", MsgBoxStyle.OkOnly, Application.ProductName & " " & Application.ProductVersion)
+            txtConsoleDisplay.Visible = False
+        Else
+            Logfile("Quest not found")
+            MsgBox("Quest not found - please try again")
+        End If
+
+    End Sub
 End Class
 
 
